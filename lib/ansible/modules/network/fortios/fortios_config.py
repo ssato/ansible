@@ -73,8 +73,9 @@ change_string:
 """
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.network.fortios.fortios import fortios_argument_spec, fortios_required_if
-from ansible.module_utils.network.fortios.fortios import backup
+from ansible.module_utils.network.fortios.fortios import (
+    fortios_argument_spec, fortios_required_if, backup
+)
 
 # check for pyFG lib
 try:
