@@ -3,6 +3,8 @@
 {# avoids rST "isn't included in any toctree" errors for module docs #}
 {% if plugin_type == 'module' %}
 :orphan:
+
+.. list_of_{{ primary_category }}_modules.html">{{ primary_category }}></a> &raquo;</li>
 {% endif %}
 
 .. _@{ module }@_@{ plugin_type }@:

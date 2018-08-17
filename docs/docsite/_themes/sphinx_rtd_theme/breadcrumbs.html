@@ -1,5 +1,16 @@
 <ul class="wy-breadcrumbs">
   <li><a href="{{ pathto(master_doc) }}">Docs</a> &raquo;</li>
+  <!-- parents: {{ parents|pprint }} -->
+  {% for doc in parents %}
+  <li><a href="{{ doc.link|e }}">{{ doc.title }}</a> &raquo;</li>
+  {% else %}
+  {%   if pagename.endswith('_module') %}
+  <li><a href="modules_by_category.html">Module Index</a> &raquo;</li>
+  {%   endif %}
+  {% endfor %}
+  {% if pagename.endswith('_module') and primary_category|default('') %}
+  <li><a href="list_of_{{ primary_category }}_modules.html">{{ primary_category }}></a> &raquo;</li>
+  {% endif %}
   <li><a href="">{{ title }}</a></li>
   {% if pagename.endswith('_module') %}
     <li class="wy-breadcrumbs-aside">
