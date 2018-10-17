@@ -525,10 +525,7 @@ class F5BaseClient(object):
 
     @staticmethod
     def validate_params(key, store):
-        if key in store and store[key] is not None:
-            return True
-        else:
-            return False
+        return store.get(key, None) is not None
 
     def merge_provider_params(self):
         result = dict()
