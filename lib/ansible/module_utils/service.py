@@ -47,14 +47,15 @@ def sysv_is_enabled(name, runlevel=None):
     :arg name: name of the service to test for
     :kw runlevel: runlevel to check (default: None)
     '''
-    if runlevel:
-        if not os.path.isdir('/etc/rc0.d/'):
-            return bool(glob.glob('/etc/init.d/rc%s.d/S??%s' % (runlevel, name)))
-        return bool(glob.glob('/etc/rc%s.d/S??%s' % (runlevel, name)))
+    if runlevel is None:
+        runlevel = '?'
+
+    if os.path.isdir('/etc/rc0.d/'):
+        spath = '/etc/rc%s.d/S??%s'
     else:
-        if not os.path.isdir('/etc/rc0.d/'):
-            return bool(glob.glob('/etc/init.d/rc?.d/S??%s' % name))
-        return bool(glob.glob('/etc/rc?.d/S??%s' % name))
+        spath = '/etc/init.d/rc%s.d/S??%s'
+
+    return bool(glob.glob(spath % (runlevel, name)))
 
 
 def get_sysv_script(name):
