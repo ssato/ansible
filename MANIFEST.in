@@ -3,6 +3,7 @@ include COPYING
 include SYMLINK_CACHE.json
 include requirements.txt
 include .coveragerc
+include setup.*
 include shippable.yml
 include tox.ini
 include bin/ansible-test
